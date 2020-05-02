@@ -1,0 +1,1 @@
+export appnm='com.kaisarcode.buggy' && tsudo pm uninstall $appnm && sh build.sh && tsudo pm install ./bin/app.apk && am start --user 0 -n $appnm/$appnm.MainActivity
