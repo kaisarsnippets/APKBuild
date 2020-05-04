@@ -4,8 +4,8 @@ fi
 if ( ! -d 'obj') then
 	mkdir 'obj';
 fi
-if ( ! -d 'bin') then
-	mkdir 'bin';
+if ( ! -d 'app') then
+	mkdir 'app';
 fi
 echo "Start package.";
 aapt package -v -f \
@@ -15,17 +15,17 @@ aapt package -v -f \
 echo "Compile java sources.";
 ecj -d ./obj -sourcepath . $(find . -type f -name "*.java");
 echo "Generate dex files.";
-dx --dex --verbose --output=./bin/classes.dex ./obj;
+dx --dex --verbose --output=./app/classes.dex ./obj;
 echo 'Compile apk.';
 aapt package -v -f \
 	--min-sdk-version 1 \
-	--target-sdk-version 999999999 \
+	--target-sdk-version 999 \
     -M ./AndroidManifest.xml \
     -S ./res \
     -A ./assets \
-    -F bin/tmp.apk;
+    -F app/tmp.apk;
 echo 'Append dex to apk.';
-cd bin;
+cd app;
 aapt add -f tmp.apk classes.dex;
 echo "Sign apk.";
 apksigner debug.key tmp.apk app.apk;
