@@ -29,7 +29,7 @@ The default setup comes with the name com.company.dummy
 You must change the package name by the one you'll use in:
 - ./AndroidManifest.xml.
 - ./src/com/company/dummy/MainActivity.java.
-And, of course, change the directories "./src/com/company/dummy" according to your package name.
+- And, of course, change the directories "./src/com/company/dummy" according to your package name.
 
 ## Compile
 Before you compile, make sure the "build.sh" file has your desired target sdk version number. 
